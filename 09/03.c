@@ -11,12 +11,28 @@
 #define RIGHT 3
 #define NO_DIRECTIONS 4
 
+void generate_random_walk( char walk[ARR_SIZE][ARR_SIZE] );
+void print_array( char walk[ARR_SIZE][ARR_SIZE] );
+
 int main( void )
 {
   srand((unsigned) time(NULL));
 
   char field[ARR_SIZE][ARR_SIZE] = {};
-  short x, y;
+
+  generate_random_walk( field );
+
+  print_array( field );
+
+  return 0;
+}
+
+// no modification to the logic, just set the prototype to char walk[10]...
+// but the actual implementation used 'field' as the array name
+
+void generate_random_walk( char field[ARR_SIZE][ARR_SIZE]){
+
+short x, y;
 
   for ( y = 0; y < ARR_SIZE; y++)
   {
@@ -89,7 +105,11 @@ int main( void )
     }
     field[y][x] = letter++;
   }
+}
 
+void print_array( char field[ARR_SIZE][ARR_SIZE])
+{
+  short x, y;
   for ( y = 1; y < ARR_SIZE - 1; y++)
   {
     for ( x = 1; x < ARR_SIZE - 1; x++)
@@ -98,6 +118,4 @@ int main( void )
     }
     printf("\n");
   }
-
-  return 0;
 }

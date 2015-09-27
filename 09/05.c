@@ -2,6 +2,9 @@
 
 #define NOT_VALID_SIZE (n % 2 != 1 || n < 1 || n > 99)
 
+void create_magic_square( int n, char magic_square[n][n]);
+void print_magic_square( int n, char magic_square[n][n]);
+
 int main( void )
 {
   printf( "This program creates a magic square of a specified size.\n"\
@@ -18,7 +21,16 @@ int main( void )
   while ( NOT_VALID_SIZE);
 
   int square[n][n];
+  create_magic_square( n, square );
 
+  // print square
+  print_magic_square( n, square );
+
+  return 0;
+}
+
+void create_magic_square( int n, char square[n][n])
+{
   int i,j;
 
   // initialize all elements to 0
@@ -69,15 +81,18 @@ int main( void )
     }
   }
 
-  // print square
+}
+
+
+void print_magic_square( int n, char magic_square[n][n])
+{
+  int i, j;
   for ( i = 0; i < n; i++)
   {
     for ( j = 0; j < n; j++)
     {
-      printf("%3d ", square[i][j]);
+      printf("%3d ", magic_square[i][j]);
     }
     printf("\n");
   }
-
-  return 0;
 }
